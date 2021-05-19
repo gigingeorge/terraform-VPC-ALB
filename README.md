@@ -1,8 +1,9 @@
 # Creating VPC and Application Load Balancer using Terraform
 
 Terraform is a tool for building infrastructure with various technologies including Amazon AWS, Microsoft Azure, Google Cloud, and vSphere.
-Here is a simple document on how to use Terraform to build an AWS VPC with Subnets, Network ACL for the VPC along with Application load balancer
-We will be making 1 VPC with 3  Public subnet,  Internet Gateway,  Route Tables, 1 Target group,  Autoscaling group and lauch configuration
+Here is a simple document on how to use Terraform to build an AWS VPC with Subnets, Network ACL for the VPC along with Application load balancer so that gigingeorge.online will go to target group 1 (tg-1) and blog.gigingeorge.online will go to target group 2 (tg-2).
+
+We will be creating 1 VPC with 3  Public subnet,  Internet Gateway,  Route Tables, 2 Target group,  Autoscaling group and lauch configuration
 ## Features
 
 - Easy to customise and use as the Terraform modules are created using variables,allowing the module to be customized without altering the module's own source code, and allowing modules to be shared between different configurations.
