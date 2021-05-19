@@ -549,6 +549,6 @@ cp -r /var/website/*  /var/www/html/
 chown -R apache:apache /var/www/html/*
 ```
 
-> Note : I used the same laucj configuration for both the ASG. However, I've inserted code so that it will show the hostname IP, so that we can identify from which target group it was loaded. 
+> Note : I used the same lauchReadme configuration for both the ASG. However, I've inserted code so that it will show the hostname IP, so that we can identify from which target group it was loaded. 
 
 
