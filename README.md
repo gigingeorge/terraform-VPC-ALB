@@ -271,7 +271,7 @@ The main components of an Application load balancer are
 
 The following diagram illustrates the basic components. 
 
-![alt text](https://imgur.com/a/oPXWEqj)
+![alt text](https://i.ibb.co/dQ7rc4k/Screenshot-from-2021-05-19-18-59-29.png)
 
 ##### Get all subnet of default vpc
 
