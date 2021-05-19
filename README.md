@@ -273,7 +273,7 @@ The following diagram illustrates the basic components.
 
 ![alt text](https://i.ibb.co/dQ7rc4k/Screenshot-from-2021-05-19-18-59-29.png)
 
-##### Get all subnet of default vpc
+##### Get all subnet of new vpc
 
 ```sh
 data "aws_subnet_ids" "default" {
