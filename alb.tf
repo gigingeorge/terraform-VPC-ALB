@@ -160,16 +160,7 @@ security_groups = [ aws_security_group.webserver.id ]
     create_before_destroy = true
   }
 }
-resource "aws_launch_configuration" "launch2" {
-  image_id      = "ami-0ad704c126371a549"
-  instance_type = "t2.micro"
-security_groups = [ aws_security_group.webserver.id ]
-  user_data = file("launch-2.sh")
 
-  lifecycle {
-    create_before_destroy = true
-  }
-}
 resource "aws_autoscaling_group" "asg-1" {
 
   launch_configuration    =  aws_launch_configuration.launch1.id
@@ -192,7 +183,7 @@ resource "aws_autoscaling_group" "asg-1" {
 }
 resource "aws_autoscaling_group" "asg-2" {
 
-  launch_configuration    =  aws_launch_configuration.launch2.id
+  launch_configuration    =  aws_launch_configuration.launch1.id
   health_check_type       = "EC2"
   min_size                = var.asg_count
   max_size                = var.asg_count
