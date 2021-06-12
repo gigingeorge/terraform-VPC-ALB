@@ -1,4 +1,11 @@
 #========================================================
+# Get all subnet of  vpc
+#========================================================
+
+data "aws_subnet_ids" "default" {
+ vpc_id = aws_vpc.vpc.id 
+}
+#========================================================
 # Creating TargetGroup For Application LoadBalancer
 #========================================================
 resource "aws_lb_target_group" "tg-1" {
@@ -66,7 +73,7 @@ resource "aws_lb" "mylb" {
   name               = "MY-LB"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.alltraffic.id]
+  security_groups    = [aws_security_group.webserver.id]
   subnets            = data.aws_subnet_ids.default.ids
   enable_deletion_protection = false
   depends_on = [ aws_lb_target_group.tg-1 ]
@@ -105,7 +112,7 @@ resource "aws_lb_listener" "listner" {
 
 
 #========================================================
-# forward blog.myapp.com to target group
+# forward blog.gigingeorge.online to target group
 #========================================================
 
 resource "aws_lb_listener_rule" "rule" {
@@ -144,9 +151,9 @@ resource "aws_lb_listener_rule" "rule2" {
 # myapp Launch Configuration 
 #========================================================
 resource "aws_launch_configuration" "launch1" {
-  image_id      = "ami-077e31c4939f6a2f3"
+  image_id      = "ami-0ad704c126371a549"
   instance_type = "t2.micro"
-security_groups = [ aws_security_group.alltraffic.id ]
+security_groups = [ aws_security_group.webserver.id ]
   user_data = file("launch-1.sh")
 
   lifecycle {
@@ -154,9 +161,9 @@ security_groups = [ aws_security_group.alltraffic.id ]
   }
 }
 resource "aws_launch_configuration" "launch2" {
-  image_id      = "ami-077e31c4939f6a2f3"
+  image_id      = "ami-0ad704c126371a549"
   instance_type = "t2.micro"
-security_groups = [ aws_security_group.alltraffic.id ]
+security_groups = [ aws_security_group.webserver.id ]
   user_data = file("launch-2.sh")
 
   lifecycle {
@@ -203,4 +210,3 @@ resource "aws_autoscaling_group" "asg-2" {
   }
 
 }
-
